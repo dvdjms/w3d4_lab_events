@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Event Planner!</h1>
+  {% for event in events %}
+  <div>
+    <p>
+      {{ event.name }}: <b>{{ event.description }},</b>
+      {{ event.guest_number }},
+      {{ event.room_location }},
+      {{ event.date }}
+      {{ event.recurring }}
+    </p>
+  </div>
+  {% endfor %}
+  <form action="/events" method="post">
+    <label for="name">Name:</label>
+    <input id="name" name="name" type="text"><br>
+
+    <label for="guest_number">Guests:</label>
+    <input id="guest_number" name="guest_number" type="number"><br>
+    
+    <label for="room_location">Room location:</label>
+    <input id="room_location" name="room_location" type="text"><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"rows="2" cols="30"></textarea><br>
+    <label for="date">Date:</label>
+    <input id="date" name="date" type="date"><br>
+    <label for="recurring">Recurring:</label>
+    <input id="recurring" name="recurring" type="checkbox"><br>
+    <input type="submit" value="Add Event">
+
+
+  </form>
+{% endblock %}
